@@ -4,7 +4,7 @@ module.exports = {
   images: {
     domains: ['links.papareact.com'],
   },
-  experimental: {
+  experimental:{
     appDir: true,
   },
 }

@@ -1,32 +1,20 @@
-// import admin from 'firebase-admin'
-// import { getApps } from 'firebase-admin/app'
+import admin from "firebase-admin";
+import { getApps } from "firebase-admin/app";
 
-// const serviceAccout = JSON.parse(
-//   process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
-// )
+//const serviceAccount = required("./serviceAccountKey.json");
 
-// if (!getApps().length) {
-//   admin.initializeApp({
-//     credential: admin.credential.cert(serviceAccout),
-//   })
-// }
+const serviceAccount= JSON.parse(
+    process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
+);
 
-// const adminDb = admin.firestore()
 
-// export { adminDb }
-import admin from 'firebase-admin'
-import { getApps } from 'firebase-admin/app'
+if(!getApps().length){
+    admin.initializeApp({
 
-const serviceAccount = JSON.parse(
-  process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
-)
-
-if (!getApps().length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  })
+        credential: admin.credential.cert(serviceAccount),
+    })
 }
 
-const adminDb = admin.firestore()
+const adminDb= admin.firestore();
 
-export { adminDb }
+export {adminDb};
