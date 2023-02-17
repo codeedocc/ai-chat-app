@@ -6,6 +6,8 @@ import { useSession } from 'next-auth/react'
 import { FormEvent, useState } from 'react'
 import { db } from '../firebase'
 import { toast } from 'react-hot-toast'
+import ModelSelection from './ModelSelection'
+import useSWR from 'swr'
 
 type Props = {
   chatId: string
@@ -14,9 +16,9 @@ type Props = {
 function ChatInput({ chatId }: Props) {
   const [prompt, setPrompt] = useState('')
   const { data: session } = useSession()
-
-  // useSWR to get model
-  const model = 'text-davinci-003'
+  const { data: model } = useSWR('model', {
+    fallbackData: 'text-davinci-003',
+  })
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -50,7 +52,7 @@ function ChatInput({ chatId }: Props) {
       message
     )
 
-    const notification = toast.loading('ChatGPT is thinking...')
+    const notification = toast.loading('ChatGPT думает...')
 
     await fetch('/api/askQuestion', {
       method: 'POST',
@@ -64,7 +66,7 @@ function ChatInput({ chatId }: Props) {
         session,
       }),
     }).then(() => {
-      toast.success('ChatGPT has responded', {
+      toast.success('ChatGPT ответил!', {
         id: notification,
       })
     })
@@ -79,7 +81,7 @@ function ChatInput({ chatId }: Props) {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           type="text"
-          placeholder="Type your message here..."
+          placeholder="Начните печатать..."
         />
         <button
           disabled={!prompt || !session}
@@ -90,7 +92,9 @@ function ChatInput({ chatId }: Props) {
         </button>
       </form>
 
-      <div>{/* ModelSelection */}</div>
+      <div className="md:hidden">
+        <ModelSelection />
+      </div>
     </div>
   )
 }

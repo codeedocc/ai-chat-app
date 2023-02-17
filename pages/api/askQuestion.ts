@@ -1,6 +1,6 @@
 import admin from 'firebase-admin'
 import { adminDb } from '../../firebaseAdmin'
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 import query from '../../utils/queryApi'
 
@@ -15,12 +15,12 @@ export default async function handler(
   const { prompt, chatId, model, session } = req.body
 
   if (!prompt) {
-    res.status(400).json({ answer: 'Please provide a prompt!' })
+    res.status(400).json({ answer: 'Пожалуйста, введите сообщение!' })
     return
   }
 
   if (!chatId) {
-    res.status(400).json({ answer: 'Please provide a valid chat ID!' })
+    res.status(400).json({ answer: 'Неверный ID чата' })
     return
   }
 
@@ -28,7 +28,7 @@ export default async function handler(
   const response = await query(prompt, chatId, model)
 
   const message: Message = {
-    text: response || 'ChatGPT was unable to find an answer for that!',
+    text: response || 'ChatGPT не смог найти ответ!',
     createdAt: admin.firestore.Timestamp.now(),
     user: {
       _id: 'ChatGPT',

@@ -16,7 +16,7 @@ function Login() {
         className="text-white font-bold text-3xl animate-pulse"
         onClick={() => signIn('google')}
       >
-        Sign in to use ChatGPT
+        Войдите, чтобы использовать ChatGPT
       </button>
     </div>
   )

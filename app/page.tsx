@@ -13,31 +13,27 @@ function HomePage() {
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
             <SunIcon className="h-8 w-8" />
-            <h2>Examples</h2>
+            <h2>Примеры</h2>
           </div>
 
           <div className="space-y-2">
-            <p className="infoText">Explain Something to me</p>
-            <p className="infoText">
-              What is the difference between a dog and a cat?
-            </p>
-            <p className="infoText">What is the color of the sun?</p>
+            <p className="infoText">Расскажи мне...</p>
+            <p className="infoText">В чём отличие между котом и собакой?</p>
+            <p className="infoText">Какого цвета солнце?</p>
           </div>
         </div>
 
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
             <BoltIcon className="h-8 w-8" />
-            <h2>Capabilities</h2>
+            <h2>Возможности</h2>
           </div>
 
           <div className="space-y-2">
-            <p className="infoText">Change the ChatGPT Model to use</p>
+            <p className="infoText">Настройка модели поведения ChatGPT</p>
+            <p className="infoText">Сообщения хранятся в Firebase Firestore</p>
             <p className="infoText">
-              Messages are stored in Firebase Firestore
-            </p>
-            <p className="infoText">
-              Hot Toast notifications when ChatGPT is thinking!
+              Hot Toast уведомления о процессе работы ChatGPT
             </p>
           </div>
         </div>
@@ -45,18 +41,18 @@ function HomePage() {
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
             <ExclamationTriangleIcon className="h-8 w-8" />
-            <h2>Limitations</h2>
+            <h2>Ограничения</h2>
           </div>
 
           <div className="space-y-2">
             <p className="infoText">
-              May occasionally generate incorrect information
+              Иногда может генерировать некорректную информацию
             </p>
             <p className="infoText">
-              May occasionally produce harmful instuctions or biased content
+              Иногда может давать вредные инструкции или предвзятый контент
             </p>
             <p className="infoText">
-              Limited knowledge of world and events after 2021
+              Ограниченное знание мира и событий после 2021 года
             </p>
           </div>
         </div>
