@@ -1,1 +1,1 @@
-Проект: https://chat-gpt-codeedocc.vercel.app/
+Проект: https://chat-gpt-codeedocc.vercel.app/ 
